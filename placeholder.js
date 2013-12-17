@@ -1,20 +1,27 @@
 $(function() {
-  $('.placeholder').focus(function() {
-    if (this.value === this.title){
+  //Feature detection: skip if feature is already supported
+  if ('placeholder' in document.createElement('input')) return;
+
+  //Setup the triggers
+  $('input[placeholder]').focus(function() {
+    if (this.value === this.placeholder) {
       this.value = "";
       $(this).addClass('active');
     }
   }).blur(function() {
-    if (!this.value){
-      this.value = this.title;
+    if (!this.value) {
+      this.value = this.placeholder;
       $(this).removeClass('active');
     }
   }).trigger('blur');        
 
-  if('object' === typeof Widget && 'function' === typeof Widget.CSS){
+  //Only inject css if library is available 
+  try {
     Widget.CSS([
-        '.placeholder { color: #666; }',
-        '.placeholder.active { color: #111; }'
+        'input[placeholder]        { color: #666; }',
+        'input[placeholder].active { color: #111; }'
     ].join(' '));
+  }
+  catch (e) {
   }
 });
