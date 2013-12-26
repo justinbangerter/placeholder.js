@@ -1,7 +1,10 @@
 placeholder.js
 ==============
 
-An extremely lightweight plugin that writes placeholder text into text fields
+An extremely lightweight plugin that writes placeholder text into text fields.
+
+This plugin detects support for placeholder text in a browser and automatically
+disables itself if already supported.
 
 It requires either [jQuery](http://jquery.com/) or [Zepto](http://zeptojs.com/) 
 and has a soft dependency on [css.js](https://github.com/justinbangerter/css.js)
